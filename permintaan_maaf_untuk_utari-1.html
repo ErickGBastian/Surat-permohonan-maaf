@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Utari Salpira ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden;
+  font-family:Georgia,"Times New Roman",serif;
+  background:linear-gradient(135deg,#210b17,#5b1830,#180812);
+  color:#fff; text-align:center;
+}
+.bg{
+  position:fixed; inset:0; z-index:-2;
+  background:
+    linear-gradient(rgba(25,5,15,.52),rgba(25,5,15,.72)),
+    url("foto.jpg") center/cover no-repeat;
+  filter:blur(2px); transform:scale(1.04);
+}
+.glow{
+  position:fixed; inset:0; z-index:-1;
+  background:radial-gradient(circle at 50% 35%,rgba(255,180,200,.18),transparent 45%);
+}
+.container{width:min(92%,720px);margin:auto;padding:55px 0 80px}
+.card{
+  padding:28px 22px 34px; border-radius:28px;
+  background:rgba(20,7,15,.66);
+  border:1px solid rgba(255,220,230,.22);
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  animation:appear 1.6s ease both;
+}
+h1{font-size:clamp(32px,8vw,58px);margin:8px 0;color:#ffd7e3}
+.subtitle{font-size:18px;color:#f8c6d5;margin-bottom:24px}
+.photo{
+  width:min(100%,520px); aspect-ratio:1/1; object-fit:cover;
+  border-radius:22px; display:block; margin:0 auto 28px;
+  border:3px solid rgba(255,220,230,.55);
+  box-shadow:0 12px 35px rgba(0,0,0,.45);
+}
+.letter{
+  text-align:left; line-height:1.8; font-size:17px;
+  color:#ffeef3; min-height:190px;
+}
+.cursor{display:inline-block;width:2px;background:#ffd7e3;height:1em;animation:blink .7s infinite}
+button{
+  border:0; padding:15px 25px; border-radius:999px;
+  background:linear-gradient(135deg,#ff6f9d,#d93f70);
+  color:white; font-size:16px; font-weight:bold; cursor:pointer;
+  box-shadow:0 8px 25px rgba(217,63,112,.35);
+  transition:.25s; margin-top:18px;
+}
+button:hover{transform:translateY(-2px) scale(1.02)}
+#reply{display:none;margin-top:25px;font-size:20px;color:#ffd7e3;animation:appear 1s ease}
+.heart{
+  position:fixed; top:-30px; font-size:20px; pointer-events:none;
+  animation:fall linear forwards; opacity:.85;
+}
+.footer{margin-top:22px;color:#d9a9b8;font-size:13px}
+.music{
+  position:fixed;right:15px;bottom:15px;padding:10px 14px;
+  background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;font-size:13px;cursor:pointer;z-index:5
+}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:480px){
+  .container{padding-top:30px}
+  .card{padding:20px 16px 28px}
+  .letter{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="glow"></div>
+
+<div class="container">
+  <div class="card">
+    <div style="font-size:38px">💌</div>
+    <h1>Untuk Utari Salpira</h1>
+    <div class="subtitle">Dari Erick, dengan hati yang tulus ❤️</div>
+
+    <!-- Letakkan foto kalian dengan nama "foto.jpg" di folder yang sama -->
+    <img class="photo" src="1788995582495.jpg" alt="Foto Erick dan Utari"
+         onerror="this.style.display='none'">
+
+    <div class="letter">
+      <span id="typed"></span><span class="cursor"></span>
+    </div>
+
+    <button onclick="showReply()">Aku benar-benar minta maaf ❤️</button>
+    <div id="reply">Aku mungkin tidak sempurna, tapi perasaanku kepadamu selalu nyata. 🥺❤️</div>
+  </div>
+  <div class="footer">Dibuat khusus untuk Utari Salpira • dari Erick 🌹</div>
+</div>
+
+<!-- Musik opsional: simpan lagu sebagai "romantis.mp3" di folder yang sama -->
+<audio id="music" loop>
+  <source src="Lady Gaga, Bruno Mars - Die With A Smile (Lyrics).mp3" type="audio/mpeg">
+</audio>
+<button class="music" onclick="toggleMusic()">🎵 Musik</button>
+
+<script>
+const message = `Dear Utari Salpira...
+
+Aku ingin meminta maaf dari lubuk hatiku yang paling dalam.
+Mungkin ada perkataan atau sikapku yang membuatmu kecewa,
+sedih, atau merasa tidak dihargai.
+
+Aku sadar bahwa kata "maaf" saja mungkin belum cukup
+untuk menghapus rasa sakit yang sudah kamu rasakan.
+Tapi aku ingin kamu tahu, aku benar-benar menyesal.
+
+Aku tidak ingin ego atau kesalahanku menjadi alasan
+kita menjauh. Kamu adalah seseorang yang sangat berarti
+buatku, dan aku masih ingin menjaga apa yang kita punya.
+
+Aku tidak berjanji akan menjadi manusia yang sempurna.
+Tapi aku berjanji akan berusaha belajar dari kesalahanku,
+lebih memahami perasaanmu, dan menjadi lebih baik untukmu.
+
+To Utari, maafin aku ya... 🥺
+Terima kasih karena sudah hadir dalam hidupku.
+Aku sayang banget kamu. ❤️`;
+
+let i=0;
+function typeText(){
+  if(i<message.length){
+    document.getElementById("typed").textContent += message.charAt(i++);
+    setTimeout(typeText,28);
+  }
+}
+typeText();
+
+function showReply(){
+  document.getElementById("reply").style.display="block";
+  for(let n=0;n<18;n++) setTimeout(createHeart,n*90);
+}
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=["❤️","💕","💗","💖","🌹"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*22)+"px";
+  h.style.animationDuration=(3+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+setInterval(createHeart,700);
+
+let playing=false;
+function toggleMusic(){
+  const m=document.getElementById("music");
+  if(!playing){m.play().then(()=>{}).catch(()=>alert("Tambahkan file romantis.mp3 ke folder yang sama terlebih dahulu."));}
+  else m.pause();
+  playing=!playing;
+}
+</script>
+</body>
+</html>
